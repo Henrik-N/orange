@@ -1,4 +1,3 @@
-# cmake_minimum_required(VERSION 3.30)
 cmake_minimum_required(VERSION 3.22.1)
 
 project(orange C)
@@ -9,11 +8,15 @@ set(CMAKE_COLOR_DIAGNOSTICS ON)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DIS_DEBUG_BUILD")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DIS_RELEASE_BUILD")
 
-set(PLATFORM_LINUX   (${CMAKE_SYSTEM_NAME} STREQUAL "Linux"))
-set(PLATFORM_WINDOWS (${CMAKE_SYSTEM_NAME} STREQUAL "Windows"))
+option(PLATFORM_LINUX   "Using Linux")
+option(PLATFORM_WINDOWS "Using Windows")
 
-if (PLATFORM_LINUX)
-    add_compile_definitions(PLATFORM_LINUX=1)
+if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+    set(PLATFORM_LINUX ON)
+endif()
+
+if (${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
+    set(PLATFORM_WINDOWS ON)
 endif()
 
 add_subdirectory(src)

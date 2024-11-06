@@ -6,10 +6,15 @@ add_executable(engine
         core/asserts.h
         platform/platform.h
         platform/platform_linux.c
+        platform/platform_windows.c
 )
 
 find_package(Vulkan REQUIRED)
-find_package(X11 REQUIRED)
+
+if (${PLATFORM_LINUX})
+    find_package(X11 REQUIRED)
+    set(PLATFORM_LIBRARIES X11::xcb)
+endif()
 
 target_include_directories(engine PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
@@ -17,5 +22,5 @@ target_include_directories(engine PUBLIC
 
 target_link_libraries(engine PUBLIC
         Vulkan::Vulkan
-        X11::xcb
+        ${PLATFORM_LIBRARIES}
 )
