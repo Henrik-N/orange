@@ -1,10 +1,5 @@
 #pragma once
-#include <features.h>
 #include <stdbool.h>
-
-#if !defined __USE_ISOC11
-        #error "Compile with C11"
-#endif
 
 #define static_assert _Static_assert
 
@@ -29,9 +24,6 @@
 #endif
 #endif
 
-#if !defined(PLATFORM_LINUX)
-        #error "Currently, only Linux is supported."
-#endif
 
 #ifdef DYNLIB_EXPORT
 // Export

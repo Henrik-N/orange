@@ -1,12 +1,10 @@
-#include <errno.h>
-
 #include "platform.h"
-
 #if defined(PLATFORM_LINUX)
 #include "../core/asserts.h"
 #include "../core/log.h"
 
 #include <bits/time.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

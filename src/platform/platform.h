@@ -24,6 +24,8 @@ bool    platform_poll_events(Platform* platform, Platform_Events* platform_event
 void    platform_console_write(const char* message, u8 log_level);
 void    platform_console_write_error(const char* message, u8 log_level);
 
+f64     platform_get_absolute_time();
+
 void    platform_thread_sleep(u64 milliseconds);
 
 void*   platform_memory_allocate(u64 size);
